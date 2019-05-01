@@ -52,13 +52,13 @@ if [ ! "$SKIP_PIPENV_INSTALL" ]; then
             mcount "buildvar.SLUGIFY_USES_TEXT_UNIDECODE"
         fi
 
-        export PIPENV_VERSION="2018.11.26"
+        export PIPENV_VERSION="latest"
 
         # Install pipenv.
         # Due to weird old pip behavior and pipenv behavior, pipenv upgrades pip
         # to latest if only --upgrade is specified. Specify upgrade strategy to
         # avoid this eager behavior.
-        /app/.heroku/python/bin/pip install pipenv==$PIPENV_VERSION --upgrade --upgrade-strategy only-if-needed &> /dev/null
+        /app/.heroku/python/bin/pip install pipenv
 
         # Install the dependencies.
         if [[ ! -f Pipfile.lock ]]; then
